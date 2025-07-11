@@ -1,1 +1,1 @@
-# Repository for reminders in various things
+# Repository for reminders in various things using Discord webhook
