@@ -1,0 +1,17 @@
+# .github/workflows/discord-reminder.yml
+name: Discord Reminder
+
+on:
+  schedule:
+    - cron: "*/90 * * * *" # Note: GitHub only allows 5-minute granularity
+  workflow_dispatch:
+
+jobs:
+  send-discord-message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Discord Message
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+            -d '{"content": "@everyone Apocalymon Spawned!"}' \
+            ${{ secrets.DISCORD_WEBHOOK_URL }}
