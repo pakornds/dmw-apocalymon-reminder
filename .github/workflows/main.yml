@@ -1,9 +1,9 @@
-name: Discord 90-Minute Reminder (Early)
+name: Discord 90-Minute Reminder (5 Minutes Early)
 
 on:
   schedule:
-    - cron: "55 23-22/3 * * *" # 5 minutes before 00:00, 03:00, etc.
-    - cron: "25 1-23/3 * * *" # 5 minutes before 01:30, 04:30, etc.
+    - cron: "55 23,2,5,8,11,14,17,20 * * *" # 23:55, 02:55, 05:55, ...
+    - cron: "25 1,4,7,10,13,16,19,22 * * *" # 01:25, 04:25, 07:25, ...
   workflow_dispatch:
 
 jobs:
