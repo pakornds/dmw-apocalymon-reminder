@@ -1,17 +1,19 @@
-# .github/workflows/discord-reminder.yml
-name: Discord Reminder
+name: Discord 90-Minute Reminder
 
 on:
   schedule:
-    - cron: "*/90 * * * *" # Note: GitHub only allows 5-minute granularity
-  workflow_dispatch:
+    # First job: every 3 hours starting at 00:00
+    - cron: "0 0-23/3 * * *"
+    # Second job: every 3 hours starting at 01:30
+    - cron: "30 1-23/3 * * *"
+  workflow_dispatch: # Optional: allows manual trigger
 
 jobs:
-  send-discord-message:
+  send-reminder:
     runs-on: ubuntu-latest
     steps:
-      - name: Send Discord Message
+      - name: Send Discord Reminder
         run: |
           curl -X POST -H "Content-Type: application/json" \
-            -d '{"content": "@everyone Apocalymon Spawned!"}' \
-            ${{ secrets.DISCORD_WEBHOOK_URL }}
+            -d '{"content": "@everyone APOCALYMON SPAWNED (90-minute reminder)"}' \
+            "${{ secrets.DISCORD_WEBHOOK_URL }}"
