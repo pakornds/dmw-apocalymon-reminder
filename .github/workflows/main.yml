@@ -1,19 +1,32 @@
-name: Discord 90-Minute Reminder
+name: Discord 90-Minute Reminder (Early)
 
 on:
   schedule:
-    # First job: every 3 hours starting at 00:00
-    - cron: "0 0-23/3 * * *"
-    # Second job: every 3 hours starting at 01:30
-    - cron: "30 1-23/3 * * *"
-  workflow_dispatch: # Optional: allows manual trigger
+    - cron: "55 23-22/3 * * *" # 5 minutes before 00:00, 03:00, etc.
+    - cron: "25 1-23/3 * * *" # 5 minutes before 01:30, 04:30, etc.
+  workflow_dispatch:
 
 jobs:
   send-reminder:
     runs-on: ubuntu-latest
     steps:
-      - name: Send Discord Reminder
+      - name: Send Discord Reminder with Banner
         run: |
           curl -X POST -H "Content-Type: application/json" \
-            -d '{"content": "@everyone APOCALYMON SPAWNED (90-minute reminder)"}' \
+            -d '{
+              "content": "@everyone",
+              "embeds": [
+                {
+                  "title": "☠️ APOCALYMON SPAWNED",
+                  "description": "Prepare for battle! A wild Apocalymon has emerged in the Digital World!",
+                  "color": 16711680,
+                  "image": {
+                    "url": "https://dmowiki.com/images/a/a0/Apocalymon.png"
+                  },
+                  "footer": {
+                    "text": "Next spawn in 90 minutes..."
+                  }
+                }
+              ]
+            }' \
             "${{ secrets.DISCORD_WEBHOOK_URL }}"
