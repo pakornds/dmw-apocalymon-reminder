@@ -1,5 +1,0 @@
-{
-  "webhook_url": "https://discord.com/api/webhooks/1393172148167643228/tXfaCRLLwewFV6hj4lTtfjnp0xKY-QQkGlIzGJbSDfxV12cwtrvFtplybaySJijqohpy",
-  "reminder_interval_minutes": 90,
-  "custom_message": "🔔 **Reminder!**\n\nThis is your scheduled reminder every 1.5 hours!"
-}
