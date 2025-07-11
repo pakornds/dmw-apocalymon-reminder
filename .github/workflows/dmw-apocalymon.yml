@@ -14,7 +14,7 @@ jobs:
         run: |
           curl -X POST -H "Content-Type: application/json" \
             -d '{
-              "content": "@everyone Apocalymon will spawn in 5 minutes! Get ready to battle!",
+              "content": "@everyone Apocalymon will spawn in 15 minutes! Get ready to battle!",
               "embeds": [
                 {
                   "title": "☠️ APOCALYMON SPAWNED",
