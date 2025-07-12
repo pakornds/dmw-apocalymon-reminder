@@ -2,8 +2,10 @@ name: Discord 90-Minute Reminder (5 Minutes Early)
 
 on:
   schedule:
-    - cron: "55 23,2,5,8,11,14,17,20 * * *" # 23:55, 02:55, 05:55, ...
-    - cron: "25 1,4,7,10,13,16,19,22 * * *" # 01:25, 04:25, 07:25, ...
+    # For 5 minutes before spawn times in GMT+7
+    # Subtract 7 hours from your desired local times
+    - cron: "55 16,19,22,1,4,7,10,13 * * *" # 23:55, 02:55, 05:55, 08:55, 11:55, 14:55, 17:55, 20:55 GMT+7
+    - cron: "25 18,21,0,3,6,9,12,15 * * *" # 01:25, 04:25, 07:25, 10:25, 13:25, 16:25, 19:25, 22:25 GMT+7
   workflow_dispatch:
 
 jobs:
@@ -14,7 +16,7 @@ jobs:
         run: |
           curl -X POST -H "Content-Type: application/json" \
             -d '{
-              "content": "@everyone Apocalymon will spawn in 15 minutes! Get ready to battle!",
+              "content": "@everyone Apocalymon will spawn in soon!",
               "embeds": [
                 {
                   "title": "☠️ APOCALYMON SPAWNED",
