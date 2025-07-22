@@ -1,0 +1,27 @@
+name: Omegamon 5-Minute Early Reminder
+
+on:
+  schedule:
+    # Omegamon (every 4 hours, 5 minutes early)
+    - cron: "55 23,3,7,11,15,19 * * *"
+  workflow_dispatch:
+
+jobs:
+  send-reminder:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Discord Reminder with Banner
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+            -d '{
+              "content": "@everyone Reminder!",
+              "description": "Prepare for the upcoming raid!",
+              "color": 16711680,
+              "image": {
+                "url": "https://dmowiki.com/images/9/93/Omnimon.png"
+              },
+              "footer": {
+                "text": "Omegamon raid in 5 minutes..."
+              }
+            }' \
+            "${{ secrets.DISCORD_WEBHOOK_URL }}"

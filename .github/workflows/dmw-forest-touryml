@@ -1,0 +1,28 @@
+name: Forest Tour Reminder
+
+on:
+  schedule:
+    - cron: "25,55 0-23/1 * * *"
+  workflow_dispatch:
+
+jobs:
+  send-reminder:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Discord Reminder with Banner
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+            -d '{
+              "content": "@everyone Reminder! Forest Tour will start soon!",
+              "embeds": [
+                {
+                  "title": "Event Reminder",
+                  "description": "Prepare for the upcoming event!",
+                  "color": 16711680,
+                  "footer": {
+                    "text": "Next event in 5 minutes..."
+                  }
+                }
+              ]
+            }' \
+            "${{ secrets.DISCORD_WEBHOOK_URL }}"
