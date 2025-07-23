@@ -14,14 +14,22 @@ jobs:
         run: |
           curl -X POST -H "Content-Type: application/json" \
             -d '{
-              "content": "@everyone Reminder!",
+              "content": "@everyone Reminder that omegamon is coming!",
               "description": "Prepare for the upcoming raid!",
               "color": 16711680,
-              "image": {
-                "url": "https://dmowiki.com/images/9/93/Omnimon.png"
-              },
+              "embeds": [
+                {
+                  "title": "OMEGAMON SPAWNED",
+                  "description": "Prepare for battle! A wild Omegamon has emerged in the Digital World!",
+                  "color": 16711680,
+                  "image": {
+                    "url": "https://dmowiki.com/images/9/93/Omnimon.png"
+                  },
               "footer": {
                 "text": "Omegamon raid in 5 minutes..."
+                  }
+                }
+              ]
               }
             }' \
             "${{ secrets.DISCORD_WEBHOOK_URL }}"
