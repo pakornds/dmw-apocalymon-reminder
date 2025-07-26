@@ -2,10 +2,10 @@ name: Forest Tour Reminder
 
 on:
   schedule:
-    # Every 1.5 hours starting at 00:05 (e.g. 00:05, 03:05, 06:05, ...)
-    - cron: "5 0,3,6,9,12,15,18,21 * * *"
-    # Every 1.5 hours starting at 01:35 (e.g. 01:35, 04:35, 07:35, ...)
-    - cron: "35 1,4,7,10,13,16,19,22 * * *"
+    # Every 1.5 hours starting at 00:00 (5 minutes early, e.g. 00:00, 03:00, 06:00, ...)
+    - cron: "0 0,3,6,9,12,15,18,21 * * *"
+    # Every 1.5 hours starting at 01:30 (5 minutes early, e.g. 01:30, 04:30, 07:30, ...)
+    - cron: "30 1,4,7,10,13,16,19,22 * * *"
   workflow_dispatch:
 
 jobs:
@@ -22,8 +22,11 @@ jobs:
                   "title": "Event Reminder",
                   "description": "Prepare for the upcoming event!",
                   "color": 16711680,
+                  "image": {
+                    "url": "https://dmowiki.com/images/a/a4/Loading_ForestArea.jpg"
+                  },
                   "footer": {
-                    "text": "Next event in 5 minutes..."
+                    "text": "Next event soon..."
                   }
                 }
               ]
