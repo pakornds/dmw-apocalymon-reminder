@@ -14,11 +14,11 @@ jobs:
         run: |
           curl -X POST -H "Content-Type: application/json" \
             -d '{
-              "content": "@everyone Apocalymon will spawn in soon!",
+              "content": "@everyone Daily tour soon!",
               "embeds": [
                 {
                   "title": "Daily tour reminder",
-                  "description": "Prepare for battle! File island village of beginning, Glacier Area distorted data village, Western area outskirts, and shinjuku western area day",
+                  "description": "Prepare for battle!",
                   "color": 16711680,
                   "image": {
                     "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-O6jWmJhOXZH78QRDrW-4ELoBucJTvaRP4Q&s"
