@@ -1,32 +1,32 @@
-name: Discord 90-Minute Reminder (5 Minutes Early)
+# name: Discord 90-Minute Reminder (5 Minutes Early)
 
-on:
-  schedule:
-    - cron: "0 0,3,6,9,12,15,18,21 * * *" # 00:00, 03:00, ..., 21:00 UTC
-    - cron: "30 1,4,7,10,13,16,19,22 * * *" # 01:30, 04:30, ..., 22:30 UTC
-  workflow_dispatch:
+# on:
+#   schedule:
+#     - cron: "0 0,3,6,9,12,15,18,21 * * *" # 00:00, 03:00, ..., 21:00 UTC
+#     - cron: "30 1,4,7,10,13,16,19,22 * * *" # 01:30, 04:30, ..., 22:30 UTC
+#   workflow_dispatch:
 
-jobs:
-  send-reminder:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Send Discord Reminder with Banner
-        run: |
-          curl -X POST -H "Content-Type: application/json" \
-            -d '{
-              "content": "@everyone Daily tour soon!",
-              "embeds": [
-                {
-                  "title": "Daily tour reminder",
-                  "description": "Prepare for battle!",
-                  "color": 16711680,
-                  "image": {
-                    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-O6jWmJhOXZH78QRDrW-4ELoBucJTvaRP4Q&s"
-                  },
-                  "footer": {
-                    "text": "Next spawn in 90 minutes..."
-                  }
-                }
-              ]
-            }' \
-            "${{ secrets.DISCORD_WEBHOOK_URL }}"
+# jobs:
+#   send-reminder:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Send Discord Reminder with Banner
+#         run: |
+#           curl -X POST -H "Content-Type: application/json" \
+#             -d '{
+#               "content": "@everyone Daily tour soon!",
+#               "embeds": [
+#                 {
+#                   "title": "Daily tour reminder",
+#                   "description": "Prepare for battle!",
+#                   "color": 16711680,
+#                   "image": {
+#                     "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-O6jWmJhOXZH78QRDrW-4ELoBucJTvaRP4Q&s"
+#                   },
+#                   "footer": {
+#                     "text": "Next spawn in 90 minutes..."
+#                   }
+#                 }
+#               ]
+#             }' \
+#             "${{ secrets.DISCORD_WEBHOOK_URL }}"
